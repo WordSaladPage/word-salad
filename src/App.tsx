@@ -42,7 +42,7 @@ export const App = () => {
 
       {/* Bottom Half */}
       <div className='flex flex-col'>
-        <div className='flex items-center justify-around p-6'>
+        <div className='flex flex-col items-center justify-around p-6 md:flex-row'>
           {loading ? (
             <></>
           ) : (
