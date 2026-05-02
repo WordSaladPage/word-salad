@@ -15,7 +15,7 @@ export const useRandomWords = (initialCount: number) => {
   // Load word list
   useEffect(() => {
     const loadWords = async () => {
-      const res = await fetch('/words.txt')
+      const res = await fetch('words.txt')
       const text = await res.text()
       const wordArray = text
         .split('\n')
