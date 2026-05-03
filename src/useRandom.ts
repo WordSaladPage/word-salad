@@ -19,7 +19,7 @@ export const useRandomWords = (initialCount: number) => {
       const text = await res.text()
       const wordArray = text
         .split('\n')
-        .map((w) => w.trim())
+        .map((w) => w.trim().toLocaleLowerCase())
         .filter(Boolean)
       const wordSet = new Set(wordArray)
 
