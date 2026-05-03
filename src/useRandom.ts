@@ -101,7 +101,6 @@ export const useRandomGenre = () => {
       'Satire',
       'Mockumentary',
       'Biography',
-      'Autobiography',
       'True Crime',
       'War',
       'Military',
@@ -110,11 +109,8 @@ export const useRandomGenre = () => {
       'Musical',
       'Family',
       'Kids',
-      'Animation',
-      'Anime',
       'Indie',
       'Experimental',
-      'Art House',
     ],
     []
   )
