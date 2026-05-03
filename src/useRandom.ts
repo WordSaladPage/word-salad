@@ -7,9 +7,9 @@ import {
 } from 'react'
 
 export const useRandomWords = (initialCount: number) => {
-  const [allWords, setAllWords] = useState<Array<string>>([])
+  const [allWords, setAllWords] = useState<Set<string>>(new Set())
   const [words, setWords] = useState<Array<string>>([])
-  const loading = allWords.length === 0
+  const loading = allWords.size === 0
   const lastCountRef = useRef(initialCount)
 
   // Load word list
@@ -21,8 +21,9 @@ export const useRandomWords = (initialCount: number) => {
         .split('\n')
         .map((w) => w.trim())
         .filter(Boolean)
+      const wordSet = new Set(wordArray)
 
-      setAllWords(wordArray)
+      setAllWords(wordSet)
     }
 
     loadWords()
@@ -31,17 +32,17 @@ export const useRandomWords = (initialCount: number) => {
   // Helper to generate random words
   const generate = useCallback(
     (count?: number) => {
-      if (allWords.length === 0) return
-      count = Math.min(count ?? lastCountRef.current, allWords.length)
+      if (allWords.size === 0) return
+      count = Math.min(count ?? lastCountRef.current, allWords.size)
 
       const result: Array<string> = []
       const used = new Set<number>()
-
+      const allWordsArray = Array.from(allWords)
       while (result.length < count) {
-        const i = Math.floor(Math.random() * allWords.length)
+        const i = Math.floor(Math.random() * allWords.size)
         if (!used.has(i)) {
           used.add(i)
-          result.push(allWords[i])
+          result.push(allWordsArray[i])
         }
       }
 

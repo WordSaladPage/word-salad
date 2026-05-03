@@ -18,7 +18,7 @@ export const App = () => {
       {/* Top Half */}
       <div
         className={`flex items-center justify-center transition-all duration-700 ${
-          clicked ? 'h-1/2' : 'h-full'
+          clicked ? 'h-1/3 md:h-1/2' : 'h-full'
         }`}
       >
         <button
